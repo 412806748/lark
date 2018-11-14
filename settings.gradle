@@ -1,1 +1,1 @@
-include ':business', ':core'
+include ':business', ':core', ':imsdk'

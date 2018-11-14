@@ -25,9 +25,13 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
     protected FragmentActivity _mActivity = null;
 
+    /**
+     * 用于设置ViewId，可返回格式：1、R.layout.xxxx，2、返回View
+     *
+     * @return
+     */
     public abstract Object setLayout();
 
-    public abstract void initUI();
 
     public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView);
 
@@ -68,7 +72,10 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
             throw new ClassCastException("type of setLayout() must be int or View!");
         }
         onBindView(savedInstanceState, rootView);
-        initUI();
+        //
+        ImmersionBar.with(this)
+                .statusBarDarkFont(true, 0.2f)
+                .init();
         return rootView;
     }
 
@@ -196,6 +203,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         View titleBar = view.findViewById(setTitleBar());
         if (titleBar != null) {
             ImmersionBar.setTitleBar(_mActivity, titleBar);
+
         }
         View statusBarView = view.findViewById(setStatusBarView());
         if (statusBarView != null) {

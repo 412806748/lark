@@ -28,6 +28,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
     @Inject
     public MainPresenter(MainContract.Model model, MainContract.View rootView) {
         super(model, rootView);
+
     }
 
     @Override

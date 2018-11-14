@@ -52,11 +52,6 @@ public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment
         mContext = context;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return initView(inflater, container, savedInstanceState);
-    }
 
     @Override
     public void onDestroy() {

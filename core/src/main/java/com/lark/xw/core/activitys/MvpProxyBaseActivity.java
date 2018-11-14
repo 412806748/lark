@@ -25,7 +25,7 @@ import io.reactivex.subjects.Subject;
 
 import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
 
-public abstract class MvpBaseActivity<P extends IPresenter> extends ProxyActivity implements IActivity, ActivityLifecycleable {
+public abstract class MvpProxyBaseActivity<P extends IPresenter> extends ProxyActivity implements IActivity, ActivityLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
     private Cache<String, Object> mCache;

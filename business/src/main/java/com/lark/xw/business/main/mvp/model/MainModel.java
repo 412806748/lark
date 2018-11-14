@@ -23,6 +23,7 @@ public class MainModel extends BaseModel implements MainContract.Model {
     @Inject
     public MainModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
+
     }
 
     @Override
@@ -31,4 +32,6 @@ public class MainModel extends BaseModel implements MainContract.Model {
         this.mGson = null;
         this.mApplication = null;
     }
+
+
 }

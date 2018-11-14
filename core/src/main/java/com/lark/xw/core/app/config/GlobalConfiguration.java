@@ -11,6 +11,9 @@ import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.http.log.RequestInterceptor;
 import com.jess.arms.integration.ConfigModule;
 import com.jess.arms.utils.ArmsUtils;
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import com.joanzapata.iconify.fonts.IoniconsModule;
 import com.lark.xw.core.BuildConfig;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -133,6 +136,7 @@ public final class GlobalConfiguration implements ConfigModule {
         // AppLifecycles 的所有方法都会在基类 Application 的对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
         // 可以根据不同的逻辑添加多个实现类
         lifecycles.add(new AppLifecyclesImpl());
+
     }
 
     @Override
@@ -140,6 +144,8 @@ public final class GlobalConfiguration implements ConfigModule {
         // ActivityLifecycleCallbacks 的所有方法都会在 Activity (包括三方库) 的对应的生命周期中被调用,所以在对应的方法中可以扩展一些自己需要的逻辑
         // 可以根据不同的逻辑添加多个实现类
         lifecycles.add(new ActivityLifecycleCallbacksImpl());
+
+
     }
 
     @Override

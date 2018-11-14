@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
@@ -14,12 +13,18 @@ import com.lark.xw.business.main.di.component.DaggerMainComponent;
 import com.lark.xw.business.main.di.module.MainModule;
 import com.lark.xw.business.main.mvp.contract.MainContract;
 import com.lark.xw.business.main.mvp.presenter.MainPresenter;
+import com.lark.xw.business.main.mvp.ui.fragment.LarkBottomFragment;
+import com.lark.xw.core.activitys.MvpProxyBaseActivity;
+import com.lark.xw.core.fragments.BaseDelegate;
 
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
+/**
+ * 继承MvpProxyBaseActivity后，作为单Activity的入口
+ */
+public class MainActivity extends MvpProxyBaseActivity<MainPresenter> implements MainContract.View {
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -33,7 +38,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_main; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+        return 0; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     @Override
@@ -67,5 +72,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void killMyself() {
         finish();
+    }
+
+    @Override
+    public BaseDelegate setRootDelegate() {
+        return new LarkBottomFragment();
     }
 }
