@@ -5,27 +5,21 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.jess.arms.base.delegate.AppLifecycles;
-import com.jess.arms.utils.ArmsUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.IoniconsModule;
 import com.lark.xw.core.BuildConfig;
+import com.lark.xw.core.app.LarkConfig;
+import com.lark.xw.core.app.model.api.Api;
+import com.lark.xw.core.ui.icon.FontLarkModule;
 import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.ButterKnife;
-
-
 import timber.log.Timber;
 
 /**
- * ================================================
  * 展示 {@link AppLifecycles} 的用法
- * <p>
- * Created by MVPArmsTemplate
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * ================================================
+ * Application配置入口
  */
 public class AppLifecyclesImpl implements AppLifecycles {
 
@@ -36,6 +30,15 @@ public class AppLifecyclesImpl implements AppLifecycles {
 
     @Override
     public void onCreate(@NonNull Application application) {
+        //自定义全局配置
+        LarkConfig.init(application)
+                .withApiHost(Api.BASE_URL)
+                .withIcon(new IoniconsModule())
+                .withIcon(new FontAwesomeModule())
+                .withIcon(new FontLarkModule())
+                .configure();
+
+        //
         if (LeakCanary.isInAnalyzerProcess(application)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
@@ -72,9 +75,6 @@ public class AppLifecyclesImpl implements AppLifecycles {
         //msg.what = 0;
         //AppManager.post(msg); like EventBus
 
-
-        //配置字体图标库
-        Iconify.with(new FontAwesomeModule()).with(new IoniconsModule());
 
     }
 

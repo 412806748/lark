@@ -9,6 +9,7 @@ import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.lark.xw.business.main.mvp.contract.MainContract;
 import com.lark.xw.business.main.mvp.contract.MessageContract;
+import com.lark.xw.business.main.mvp.model.IMessageModel;
 
 import javax.inject.Inject;
 
@@ -29,7 +30,6 @@ public class MessagePresenter extends BasePresenter<MessageContract.Model, Messa
     @Inject
     public MessagePresenter(MessageContract.Model model, MessageContract.View rootView) {
         super(model, rootView);
-
     }
 
     @Override
@@ -40,4 +40,10 @@ public class MessagePresenter extends BasePresenter<MessageContract.Model, Messa
         this.mImageLoader = null;
         this.mApplication = null;
     }
+
+    public void getMessage() {
+        mRootView.setMessage(mModel.getmessage("调用model 方法;"));
+    }
+
+
 }

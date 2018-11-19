@@ -11,4 +11,7 @@ package com.lark.xw.core.app.model.api;
  */
 public interface Api {
     String APP_DOMAIN = "https://api.github.com";
+    String BASE_URL = "http://10.187.134.81:8881/api/";
+
+
 }

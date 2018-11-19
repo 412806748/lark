@@ -21,7 +21,6 @@ public class MessageModel extends BaseModel implements MessageContract.Model {
     @Inject
     public MessageModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
-
     }
 
     @Override
@@ -32,4 +31,8 @@ public class MessageModel extends BaseModel implements MessageContract.Model {
     }
 
 
+    @Override
+    public String getmessage(String s) {
+        return s + "ssssss";
+    }
 }
