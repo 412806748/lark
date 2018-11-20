@@ -41,9 +41,9 @@ public abstract class ProxyActivity extends SupportActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         System.gc();
         System.runFinalization();
         ImmersionBar.with(this).destroy();
+        super.onDestroy();
     }
 }

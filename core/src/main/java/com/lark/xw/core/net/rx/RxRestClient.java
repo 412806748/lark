@@ -3,9 +3,12 @@ package com.lark.xw.core.net.rx;
 import android.content.Context;
 
 
+import com.lark.xw.core.net.Entity.TestMyBanners;
 import com.lark.xw.core.net.HttpMethod;
 import com.lark.xw.core.net.RestCreator;
 import com.lark.xw.core.net.rx.Exception.Response;
+import com.lark.xw.core.net.rx.Exception.ResponseTransformer;
+import com.lark.xw.core.net.rx.Schedulers.SchedulerProvider;
 import com.lark.xw.core.ui.lorder.LatteLoader;
 import com.lark.xw.core.ui.lorder.LoaderStyle;
 
@@ -88,7 +91,15 @@ public final class RxRestClient {
     }
 
 
-    public final Observable<Response<String>> get() {
+    public final Observable<List<TestMyBanners>> getBanner() {
+        final RxRestService service = RestCreator.getRxRestService();
+        return service.getBanner(URL, PARAMS)
+                .compose(ResponseTransformer.handleResult())
+                .compose(SchedulerProvider.getInstance().applySchedulers());
+    }
+
+
+    public final Observable<Response<String>> get( ) {
         return request(HttpMethod.GET);
     }
 

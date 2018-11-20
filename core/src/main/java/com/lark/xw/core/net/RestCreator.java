@@ -1,6 +1,8 @@
 package com.lark.xw.core.net;
 
 
+import android.util.Log;
+
 import com.lark.xw.core.app.ConfigKeys;
 import com.lark.xw.core.app.LarkConfig;
 import com.lark.xw.core.net.cookies.CookiesManager;
@@ -17,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public final class RestCreator {
+    private static final String BASE_URL = LarkConfig.getConfiguration(ConfigKeys.NATIVE_API_HOST);
 
     /**
      * 构建OkHttp
@@ -27,7 +30,7 @@ public final class RestCreator {
         private static final ArrayList<Interceptor> INTERCEPTORS = LarkConfig.getConfiguration(ConfigKeys.INTERCEPTOR);
 
         private static OkHttpClient.Builder addInterceptor() {
-            if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {
+            if (INTERCEPTORS != null && INTERCEPTORS.size() > 0) {
                 for (Interceptor interceptor : INTERCEPTORS) {
                     BUILDER.addInterceptor(interceptor);
                 }
@@ -45,7 +48,6 @@ public final class RestCreator {
      * 构建全局Retrofit客户端
      */
     private static final class RetrofitHolder {
-        private static final String BASE_URL = LarkConfig.getConfiguration(ConfigKeys.NATIVE_API_HOST);
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OKHttpHolder.OK_HTTP_CLIENT)
@@ -64,11 +66,12 @@ public final class RestCreator {
     }
 
     public static RestService getRestService() {
+        Log.e("BASE_URL", BASE_URL + "");
         return RestServiceHolder.REST_SERVICE;
     }
 
     /**
-     * Service接口
+     * rxService接口
      */
     private static final class RxRestServiceHolder {
         private static final RxRestService REST_SERVICE =
@@ -76,6 +79,7 @@ public final class RestCreator {
     }
 
     public static RxRestService getRxRestService() {
+        Log.e("BASE_URL", BASE_URL + "");
         return RxRestServiceHolder.REST_SERVICE;
     }
 }

@@ -1,9 +1,10 @@
 package com.lark.xw.business.main.mvp.ui.fragment;
 
-import android.os.Binder;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,16 @@ import com.lark.xw.business.main.di.component.DaggerMessageComponent;
 import com.lark.xw.business.main.di.module.MessageModule;
 import com.lark.xw.business.main.mvp.contract.MessageContract;
 import com.lark.xw.business.main.mvp.presenter.MessagePresenter;
+import com.lark.xw.core.app.model.api.Api;
 import com.lark.xw.core.fragments.MvpBaseFragment;
+import com.lark.xw.core.net.Entity.TestMyBanners;
+import com.lark.xw.core.net.rx.RxRestClient;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.functions.Consumer;
 
 public class MessageFragment extends MvpBaseFragment<MessagePresenter> implements MessageContract.View {
 
@@ -43,8 +50,10 @@ public class MessageFragment extends MvpBaseFragment<MessagePresenter> implement
     }
 
 
+    @SuppressLint("CheckResult")
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+
 
     }
 

@@ -1,7 +1,7 @@
 package com.lark.xw.core.net.rx.Exception;
 
 
-import android.util.Log;
+import com.blankj.utilcode.util.LogUtils;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -26,12 +26,13 @@ public class ResponseTransformer {
 
         @Override
         public ObservableSource<? extends Response<T>> apply(Throwable throwable) throws Exception {
+            LogUtils.e("ErrorResumeFunction1: ", throwable.getMessage() + "");
             return Observable.error(CustomException.handleException(throwable));
         }
     }
 
     /**
-     * 服务其返回的数据解析
+     * 服务器返回的数据解析
      * 正常服务器返回数据和服务器可能返回的exception
      *
      * @param <T>
@@ -41,9 +42,9 @@ public class ResponseTransformer {
         @Override
         public ObservableSource<T> apply(Response<T> tResponse) throws Exception {
             int code = tResponse.getCode();
-            Log.e("log", code + "");
             String message = tResponse.getMsg();
-            if (code == 200 || code == 0) {
+            LogUtils.e("ResponseFunction: ", "msg: " + message + ",code:" + code);
+            if (code == 200 || code == 0 || code == 1) {
                 return Observable.just(tResponse.getData());
             } else {
                 return Observable.error(new ApiException(code, message));

@@ -4,6 +4,7 @@ import android.net.ParseException;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonParseException;
+import com.jess.arms.utils.ArmsUtils;
 
 import org.json.JSONException;
 
@@ -35,6 +36,7 @@ public class CustomException {
     public static final int HTTP_ERROR = 1003;
 
     public static ApiException handleException(Throwable e) {
+        // LogUtils.e("CustomException: ", e.toString() + "");
         ApiException exception;
         if (e instanceof JsonParseException
                 || e instanceof JSONException
@@ -54,7 +56,7 @@ public class CustomException {
             return exception;
         } else if (e instanceof HttpException) {
             HttpException httpException = (HttpException) e;
-            exception = new ApiException(UNKNOWN, convertStatusCode(httpException));
+            exception = new ApiException(httpException.code(), convertStatusCode(httpException));
             return exception;
 
         } else {
@@ -77,6 +79,7 @@ public class CustomException {
         } else {
             msg = httpException.message();
         }
+        ArmsUtils.snackbarText(msg);
         return msg;
     }
 

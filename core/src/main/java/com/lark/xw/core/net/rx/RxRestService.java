@@ -1,8 +1,10 @@
 package com.lark.xw.core.net.rx;
 
 
+import com.lark.xw.core.net.Entity.TestMyBanners;
 import com.lark.xw.core.net.rx.Exception.Response;
 
+import java.util.List;
 import java.util.WeakHashMap;
 
 import io.reactivex.Observable;
@@ -23,6 +25,9 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 public interface RxRestService {
+
+    @GET
+    Observable<Response<List<TestMyBanners>>> getBanner(@Url String url, @QueryMap WeakHashMap<String, Object> params);
 
     @GET
     Observable<Response<String>> get(@Url String url, @QueryMap WeakHashMap<String, Object> params);
