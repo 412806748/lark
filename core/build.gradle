@@ -101,5 +101,7 @@ dependencies {
     api 'com.gyf.immersionbar:immersionbar:2.3.2-beta01'
     //ui AVLoadingIndicatorView
     api 'com.wang.avi:library:2.1.3'
+    //FlycoTabLayout,tabLayout
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
 }

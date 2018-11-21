@@ -1,5 +1,6 @@
 package com.lark.xw.core.fragments.bottom;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +22,7 @@ import java.util.Map;
 import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
- * Created by jx on 2018/5/3.
+ * 底部fragment基础类
  */
 
 public abstract class BaseBottomDelegate extends WaitExitFragment implements View.OnClickListener {
@@ -31,6 +32,7 @@ public abstract class BaseBottomDelegate extends WaitExitFragment implements Vie
     private int mCurrentDelegate = 0;
     private int mIndexDelegate = 0;
     private int mClickedCole = Color.parseColor("#09C7F7");
+    private AppCompatTextView itemMessage = null;
 
     public abstract LinkedHashMap<BottomTabBean, LarkFragment> setItems(ItemBuilder itemBuilder);
 
@@ -67,6 +69,7 @@ public abstract class BaseBottomDelegate extends WaitExitFragment implements Vie
         }
     }
 
+
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         mBottomBar = rootView.findViewById(R.id.bottom_bar);
@@ -80,6 +83,11 @@ public abstract class BaseBottomDelegate extends WaitExitFragment implements Vie
             item.setOnClickListener(this);
             final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
             final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+            //获取第一个item的消息泡泡
+            if (i == 0) {
+                itemMessage = (AppCompatTextView) item.getChildAt(2);
+                itemMessage.setVisibility(View.VISIBLE);
+            }
             final BottomTabBean bean = TAB_BEANS.get(i);
             //初始化数据
             itemIcon.setText(bean.getICON());
@@ -88,6 +96,8 @@ public abstract class BaseBottomDelegate extends WaitExitFragment implements Vie
                 itemIcon.setTextColor(mClickedCole);
                 itemTitle.setTextColor(mClickedCole);
             }
+
+
         }
         //加载所有fragment视图
         final ISupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new ISupportFragment[size]);
@@ -100,7 +110,7 @@ public abstract class BaseBottomDelegate extends WaitExitFragment implements Vie
         final int count = mBottomBar.getChildCount();
         for (int i = 0; i < count; i++) {
             final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
-            item.setGravity(RelativeLayout.CENTER_IN_PARENT);
+            //  item.setGravity(RelativeLayout.CENTER_IN_PARENT);
             final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
             itemIcon.setTextColor(Color.parseColor("#666666"));
             final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
@@ -123,4 +133,15 @@ public abstract class BaseBottomDelegate extends WaitExitFragment implements Vie
         mCurrentDelegate = tag;
 
     }
+
+
+    @SuppressLint("SetTextI18n")
+    public void setMessageCount(int count) {
+        if (itemMessage != null) {
+            itemMessage.setText(count + "");
+        }
+
+    }
+
+
 }
