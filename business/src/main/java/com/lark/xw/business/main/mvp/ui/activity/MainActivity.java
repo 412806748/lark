@@ -75,6 +75,11 @@ public class MainActivity extends MvpProxyBaseActivity<MainPresenter> implements
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public BaseDelegate setRootDelegate() {
         return new LarkBottomFragment();
     }

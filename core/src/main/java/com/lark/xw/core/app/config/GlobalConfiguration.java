@@ -163,11 +163,13 @@ public final class GlobalConfiguration implements ConfigModule {
 
             @Override
             public void onFragmentDestroyed(FragmentManager fm, Fragment f) {
+
                 ((RefWatcher) ArmsUtils
                         .obtainAppComponentFromContext(f.getActivity())
                         .extras()
                         .get(RefWatcher.class.getName()))
                         .watch(f);
+
             }
         });
     }

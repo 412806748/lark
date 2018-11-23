@@ -1,17 +1,12 @@
 package com.lark.xw.core.fragments;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.jess.arms.base.delegate.IFragment;
 import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.CacheType;
-import com.jess.arms.integration.lifecycle.FragmentLifecycleable;
 import com.jess.arms.mvp.IPresenter;
 import com.jess.arms.utils.ArmsUtils;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -19,9 +14,8 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 import javax.inject.Inject;
 
 import io.reactivex.subjects.BehaviorSubject;
-import io.reactivex.subjects.Subject;
 
-public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment implements IFragment, FragmentLifecycleable {
+public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment implements IFragment {
 
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<FragmentEvent> mLifecycleSubject = BehaviorSubject.create();
@@ -40,11 +34,6 @@ public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment
         return mCache;
     }
 
-    @NonNull
-    @Override
-    public final Subject<FragmentEvent> provideLifecycleSubject() {
-        return mLifecycleSubject;
-    }
 
     @Override
     public void onAttach(Context context) {

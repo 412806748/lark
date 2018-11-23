@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.lark.xw.business.main.mvp.ui.fragment.work.msg.MsgFragment;
+import com.lark.xw.business.main.mvp.ui.fragment.work.project.ProjectFragment;
+import com.lark.xw.business.main.mvp.ui.fragment.work.task.TaskFragment;
 import com.lark.xw.core.fragments.LarkFragment;
 
 import java.util.ArrayList;

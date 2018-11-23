@@ -1,4 +1,4 @@
-package com.lark.xw.business.main.mvp.ui.fragment.work;
+package com.lark.xw.business.main.mvp.ui.fragment.work.msg;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,10 +8,11 @@ import android.view.View;
 import com.lark.xw.business.R;
 import com.lark.xw.core.fragments.LarkFragment;
 
-public class MsgFragment extends LarkFragment {
+public class MsgChildActionFragment extends LarkFragment {
+
     @Override
     public Object setLayout() {
-        return R.layout.fragment_contacts;
+        return R.layout.fragment_work_tabs_child;
     }
 
     @Override
@@ -33,4 +34,6 @@ public class MsgFragment extends LarkFragment {
     public void post(Runnable runnable) {
 
     }
+
+
 }

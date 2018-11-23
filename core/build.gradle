@@ -54,11 +54,13 @@ dependencies {
     testImplementation rootProject.ext.dependencies["junit"]
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["cardview-v7"]
-    api rootProject.ext.dependencies["autolayout"]
+    api rootProject.ext.dependencies["annotations"]
     api rootProject.ext.dependencies["butterknife"]
+    api rootProject.ext.dependencies["autosize"]
     api rootProject.ext.dependencies["androideventbus"]
     api rootProject.ext.dependencies["dagger2"]
     api 'me.jessyan:arms:2.5.0'
+    api rootProject.ext.dependencies["multidex"]
     //
     //tools
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]

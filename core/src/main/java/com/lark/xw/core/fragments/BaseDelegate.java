@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.gyf.barlibrary.ImmersionBar;
 import com.lark.xw.core.activitys.ProxyActivity;
 
+import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
@@ -71,6 +72,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         } else {
             throw new ClassCastException("type of setLayout() must be int or View!");
         }
+        ButterKnife.bind(this, rootView);
         onBindView(savedInstanceState, rootView);
         //
         ImmersionBar.with(this)

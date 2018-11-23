@@ -49,7 +49,7 @@ public class ContactsFragment extends MvpBaseFragment<ContactsPresenter> impleme
 
     @Override
     public Object setLayout() {
-        return R.layout.fragment_contacts;
+        return R.layout.fragment_work_tabs;
     }
 
     @Override
