@@ -6,16 +6,22 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.Toolbar;
 import android.util.JsonToken;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.widget.CustomPopupWindow;
 import com.lark.xw.business.R;
 import com.lark.xw.business.main.di.component.DaggerMessageComponent;
 import com.lark.xw.business.main.di.module.MessageModule;
@@ -23,17 +29,23 @@ import com.lark.xw.business.main.mvp.contract.MessageContract;
 import com.lark.xw.business.main.mvp.entity.TabEntity;
 import com.lark.xw.business.main.mvp.presenter.MessagePresenter;
 import com.lark.xw.core.fragments.MvpBaseFragment;
+import com.lark.xw.core.utils.ppw.popupwindowUtil;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WorkFragment extends MvpBaseFragment<MessagePresenter> implements MessageContract.View, OnTabSelectListener, ViewPager.OnPageChangeListener {
     @BindView(R.id.id_message_tabLayout)
     public CommonTabLayout tabLayout;
     @BindView(R.id.id_message_viewPager)
     public ViewPager viewPager;
+    @BindView(R.id.id_toolbar)
+    public Toolbar mToolbar;
+
+
     //
     private String[] mTitles = {"信息", "项目", "任务"};
 
@@ -79,7 +91,6 @@ public class WorkFragment extends MvpBaseFragment<MessagePresenter> implements M
     public void showMessage(@NonNull String message) {
 
     }
-
 
     @Override
     public Object setLayout() {
@@ -172,6 +183,25 @@ public class WorkFragment extends MvpBaseFragment<MessagePresenter> implements M
     @Override
     public void onPageScrollStateChanged(int i) {
 
+    }
+
+
+    //右上角点击更多按钮
+    @OnClick(R.id.id_work_more)
+    public void clickMore() {
+        popupwindowUtil.create().showPPw(getActivity(), R.layout.ppw_work_more, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, mToolbar
+                , Gravity.TOP | Gravity.RIGHT,
+                30, mToolbar.getHeight() + 30, new popupwindowUtil.ClickListener() {
+                    @Override
+                    public void setUplistener(popupwindowUtil.PopBuilder builder) {
+                        TextView tv_addProject = builder.getView(R.id.id_add_project);
+                        TextView tv_addTask = builder.getView(R.id.id_add_task);
+                        TextView tv_addFriend = builder.getView(R.id.id_add_friend);
+                        TextView tv_scan = builder.getView(R.id.id_add_scan);
+
+
+                    }
+                });
     }
 
 

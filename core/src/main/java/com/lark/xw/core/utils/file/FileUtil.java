@@ -1,4 +1,4 @@
-package com.lark.xw.core.app.utils.file;
+package com.lark.xw.core.utils.file;
 
 import android.content.ContentResolver;
 import android.content.Context;

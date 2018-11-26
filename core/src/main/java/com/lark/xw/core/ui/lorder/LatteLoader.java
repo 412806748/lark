@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.lark.xw.core.R;
-import com.lark.xw.core.app.utils.dimen.DimenUtil;
+import com.lark.xw.core.utils.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

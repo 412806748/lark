@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 
 
 import com.lark.xw.core.app.LarkConfig;
-import com.lark.xw.core.app.utils.file.FileUtil;
+import com.lark.xw.core.utils.file.FileUtil;
 import com.lark.xw.core.net.callback.IRequest;
 import com.lark.xw.core.net.callback.ISuccess;
 

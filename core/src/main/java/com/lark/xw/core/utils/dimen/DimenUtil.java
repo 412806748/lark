@@ -1,4 +1,4 @@
-package com.lark.xw.core.app.utils.dimen;
+package com.lark.xw.core.utils.dimen;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;

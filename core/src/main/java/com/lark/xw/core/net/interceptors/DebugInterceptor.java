@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RawRes;
 
 
-import com.lark.xw.core.app.utils.file.FileUtil;
+import com.lark.xw.core.utils.file.FileUtil;
 
 import java.io.IOException;
 

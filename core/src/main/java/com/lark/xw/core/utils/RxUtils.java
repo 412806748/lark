@@ -1,4 +1,4 @@
-package com.lark.xw.core.app.utils;
+package com.lark.xw.core.utils;
 
 import com.jess.arms.mvp.IView;
 import com.jess.arms.utils.RxLifecycleUtils;
