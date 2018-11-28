@@ -1,4 +1,4 @@
-package com.lark.xw.core.app;
+package com.lark.xw.core.app.config.larkConfig;
 
 import android.os.Handler;
 

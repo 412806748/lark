@@ -1,4 +1,4 @@
-package com.lark.xw.core.app.config;
+package com.lark.xw.core.app.config.appConfig;
 
 import android.app.Application;
 import android.content.Context;
@@ -6,15 +6,15 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.jess.arms.base.delegate.AppLifecycles;
-import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.IoniconsModule;
 import com.lark.xw.core.BuildConfig;
 import com.lark.xw.core.R;
-import com.lark.xw.core.app.LarkConfig;
+import com.lark.xw.core.app.config.larkConfig.LarkConfig;
 import com.lark.xw.core.app.model.api.Api;
 import com.lark.xw.core.net.interceptors.DebugInterceptor;
 import com.lark.xw.core.ui.icon.FontLarkModule;
+import com.lzy.okgo.OkGo;
 import com.squareup.leakcanary.LeakCanary;
 
 import butterknife.ButterKnife;
@@ -70,7 +70,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
         //msg.what = 0;
         //AppManager.post(msg); like EventBus
 
-        Log.e("AppLifecyclesImpl","init");
+        Log.e("AppLifecyclesImpl", "init");
         //自定义全局配置
         LarkConfig.init(application)
                 .withApiHost(Api.BASE_URL)
@@ -79,6 +79,9 @@ public class AppLifecyclesImpl implements AppLifecycles {
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontLarkModule())
                 .configure();
+
+        //
+        OkGo.getInstance().init(application);
 
 
     }

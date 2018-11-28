@@ -3,8 +3,8 @@ package com.lark.xw.core.net;
 
 import android.util.Log;
 
-import com.lark.xw.core.app.ConfigKeys;
-import com.lark.xw.core.app.LarkConfig;
+import com.lark.xw.core.app.config.larkConfig.ConfigKeys;
+import com.lark.xw.core.app.config.larkConfig.LarkConfig;
 import com.lark.xw.core.net.cookies.CookiesManager;
 import com.lark.xw.core.net.rx.RxRestService;
 
@@ -66,7 +66,7 @@ public final class RestCreator {
     }
 
     public static RestService getRestService() {
-        Log.e("BASE_URL", BASE_URL + "");
+        Log.d("RestService-BASE_URL", BASE_URL + "");
         return RestServiceHolder.REST_SERVICE;
     }
 
@@ -79,7 +79,7 @@ public final class RestCreator {
     }
 
     public static RxRestService getRxRestService() {
-        Log.e("BASE_URL", BASE_URL + "");
+        Log.d("RxRestService-BASE_URL", BASE_URL + "");
         return RxRestServiceHolder.REST_SERVICE;
     }
 }

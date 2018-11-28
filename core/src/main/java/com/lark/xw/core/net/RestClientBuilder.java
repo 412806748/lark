@@ -75,7 +75,7 @@ public final class RestClientBuilder {
     }
 
     public final RestClientBuilder raw(String raw) {
-        this.mBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), raw);
+        this.mBody = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), raw);
         return this;
     }
 

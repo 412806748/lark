@@ -1,6 +1,7 @@
 package com.lark.xw.core.net;
 
 import android.content.Context;
+import android.util.Log;
 
 
 import com.lark.xw.core.net.callback.IError;
@@ -90,6 +91,7 @@ public final class RestClient {
                 call = service.post(URL, PARAMS);
                 break;
             case POST_RAW:
+                Log.d("RestClient--POST_RAW; ", BODY.toString() + "");
                 call = service.postRaw(URL, BODY);
                 break;
             case PUT:
@@ -138,6 +140,7 @@ public final class RestClient {
             if (!PARAMS.isEmpty()) {
                 throw new RuntimeException("params must be null!");
             }
+
             request(HttpMethod.POST_RAW);
         }
     }
@@ -162,7 +165,7 @@ public final class RestClient {
     }
 
     public final void download() {
-        new DownloadHandler(URL, PARAMS,REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
+        new DownloadHandler(URL, PARAMS, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
                 SUCCESS, FAILURE, ERROR)
                 .handleDownload();
     }

@@ -83,7 +83,7 @@ public final class DownloadHandler {
                     @Override
                     public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                         if (FAILURE != null) {
-                            FAILURE.onFailure();
+                            FAILURE.onFailure(t);
                         }
                     }
                 });

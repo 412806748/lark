@@ -16,7 +16,7 @@ import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 
 @FragmentScope
-public class ContactsPresenter extends BasePresenter<ContactsContract.Model, ContactsContract.View> {
+public class LoginPresenter extends BasePresenter<ContactsContract.Model, ContactsContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -27,7 +27,7 @@ public class ContactsPresenter extends BasePresenter<ContactsContract.Model, Con
     AppManager mAppManager;
 
     @Inject
-    public ContactsPresenter(ContactsContract.Model model, ContactsContract.View rootView) {
+    public LoginPresenter(ContactsContract.Model model, ContactsContract.View rootView) {
         super(model, rootView);
 
     }

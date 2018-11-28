@@ -1,4 +1,4 @@
-package com.lark.xw.core.app.config;
+package com.lark.xw.core.app.config.appConfig;
 
 import android.app.Activity;
 import android.app.Application;

@@ -14,14 +14,14 @@ import javax.inject.Inject;
 
 
 @FragmentScope
-public class ContactsModel extends BaseModel implements ContactsContract.Model {
+public class LoginModel extends BaseModel implements ContactsContract.Model {
     @Inject
     Gson mGson;
     @Inject
     Application mApplication;
 
     @Inject
-    public ContactsModel(IRepositoryManager repositoryManager) {
+    public LoginModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
 
     }

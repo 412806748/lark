@@ -2,7 +2,6 @@ package com.lark.xw.business.main.mvp.contract;
 
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
-import com.lark.xw.business.main.mvp.model.IMessageModel;
 
 
 public interface MessageContract {

@@ -1,5 +1,6 @@
 package com.lark.xw.business.main.mvp.ui.fragment;
 
+import com.lark.xw.business.main.mvp.ui.fragment.user.UserFragment;
 import com.lark.xw.business.main.mvp.ui.fragment.work.WorkFragment;
 import com.lark.xw.core.fragments.LarkFragment;
 import com.lark.xw.core.fragments.bottom.BaseBottomDelegate;

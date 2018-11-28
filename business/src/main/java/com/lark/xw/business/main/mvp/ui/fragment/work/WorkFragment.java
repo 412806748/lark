@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
-import android.util.JsonToken;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +19,6 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.widget.CustomPopupWindow;
 import com.lark.xw.business.R;
 import com.lark.xw.business.main.di.component.DaggerMessageComponent;
 import com.lark.xw.business.main.di.module.MessageModule;
@@ -157,8 +154,6 @@ public class WorkFragment extends MvpBaseFragment<MessagePresenter> implements M
     @Override
     public void onTabSelect(int position) {
         viewPager.setCurrentItem(position);
-        //根据不同的title设置toolbar的相关属性
-
     }
 
     @Override
@@ -175,8 +170,6 @@ public class WorkFragment extends MvpBaseFragment<MessagePresenter> implements M
     @Override
     public void onPageSelected(int i) {
         tabLayout.setCurrentTab(i);
-        //根据不同的title设置toolbar的相关属性
-
 
     }
 

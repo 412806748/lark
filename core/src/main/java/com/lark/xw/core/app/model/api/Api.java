@@ -10,8 +10,27 @@ package com.lark.xw.core.app.model.api;
  * ================================================
  */
 public interface Api {
-    String APP_DOMAIN = "https://api.github.com";
-    String BASE_URL = "http://www.wanandroid.com/";
-    String HOME_BANNER_URL = "banner/json/";
+    String BASE_URL = "http://10.187.134.81:8881/api/";
+    /**
+     * post
+     * <p>
+     * 参数：josn字符串
+     * {
+     * "username":"admin",
+     * "password":"12345"
+     * }
+     */
+    String REGESTER_URL = "account/register";
+    /**
+     * post
+     * <p>
+     * 参数：josn字符串
+     * {
+     * "username":"admin",
+     * "password":"12345"
+     * }
+     */
+    String LOGIN_URL = "account/login";
+
 
 }

@@ -1,4 +1,4 @@
-package com.lark.xw.core.app.config;
+package com.lark.xw.core.app.config.appConfig;
 
 import android.content.Context;
 import android.net.ParseException;

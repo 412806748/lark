@@ -1,4 +1,4 @@
-package com.lark.xw.business.main.mvp.ui.fragment;
+package com.lark.xw.business.main.mvp.ui.fragment.user;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,21 +9,21 @@ import android.view.ViewGroup;
 
 import com.jess.arms.di.component.AppComponent;
 import com.lark.xw.business.R;
-import com.lark.xw.business.main.di.component.DaggerContactsComponent;
-import com.lark.xw.business.main.di.module.ContactsModule;
-import com.lark.xw.business.main.mvp.contract.ContactsContract;
-import com.lark.xw.business.main.mvp.presenter.ContactsPresenter;
+import com.lark.xw.business.main.di.component.DaggerUserComponent;
+import com.lark.xw.business.main.di.module.UserModule;
+import com.lark.xw.business.main.mvp.contract.UserContract;
+import com.lark.xw.business.main.mvp.presenter.UserPresenter;
 import com.lark.xw.core.fragments.MvpBaseFragment;
 
-public class ContactsFragment extends MvpBaseFragment<ContactsPresenter> implements ContactsContract.View {
+public class UserFragment extends MvpBaseFragment<UserPresenter> implements UserContract.View {
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-        DaggerContactsComponent.builder()
+        DaggerUserComponent //如找不到该类,请编译一下项目
+                .builder()
                 .appComponent(appComponent)
-                .contactsModule(new ContactsModule(this))
+                .userModule(new UserModule(this))
                 .build()
                 .inject(this);
-
 
     }
 
@@ -49,7 +49,7 @@ public class ContactsFragment extends MvpBaseFragment<ContactsPresenter> impleme
 
     @Override
     public Object setLayout() {
-        return R.layout.fragment_work_tabs;
+        return R.layout.fragment_user;
     }
 
     @Override

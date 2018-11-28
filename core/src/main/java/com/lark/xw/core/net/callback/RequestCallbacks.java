@@ -2,17 +2,13 @@ package com.lark.xw.core.net.callback;
 
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 
 import com.jess.arms.utils.LogUtils;
-import com.lark.xw.core.app.ConfigKeys;
-import com.lark.xw.core.app.LarkConfig;
+import com.lark.xw.core.app.config.larkConfig.ConfigKeys;
+import com.lark.xw.core.app.config.larkConfig.LarkConfig;
 import com.lark.xw.core.ui.lorder.LatteLoader;
 import com.lark.xw.core.ui.lorder.LoaderStyle;
-import com.squareup.leakcanary.CanaryLog;
-
-import java.util.logging.Logger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +53,7 @@ public final class RequestCallbacks implements Callback<String> {
     public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
         LogUtils.debugInfo(t.getMessage());
         if (FAILURE != null) {
-            FAILURE.onFailure();
+            FAILURE.onFailure(t);
         }
         if (REQUEST != null) {
             REQUEST.onRequestEnd();

@@ -39,7 +39,7 @@
 
         <!-- arms配置 -->
         <meta-data
-            android:name="com.lark.xw.core.app.config.GlobalConfiguration"
+            android:name="com.lark.xw.core.app.config.appConfig.GlobalConfiguration"
             android:value="ConfigModule" />
 
         <!--腾讯IM配置-->

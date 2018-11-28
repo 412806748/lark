@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.lark.xw.core.app.LarkConfig;
+import com.lark.xw.core.app.config.larkConfig.LarkConfig;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

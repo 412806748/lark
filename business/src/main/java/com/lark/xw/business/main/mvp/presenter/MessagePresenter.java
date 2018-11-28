@@ -2,14 +2,11 @@ package com.lark.xw.business.main.mvp.presenter;
 
 import android.app.Application;
 
-import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.di.scope.FragmentScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
-import com.lark.xw.business.main.mvp.contract.MainContract;
 import com.lark.xw.business.main.mvp.contract.MessageContract;
-import com.lark.xw.business.main.mvp.model.IMessageModel;
 
 import javax.inject.Inject;
 

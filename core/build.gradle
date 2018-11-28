@@ -52,13 +52,11 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api project(':imsdk')
     testImplementation rootProject.ext.dependencies["junit"]
-    api rootProject.ext.dependencies["gson"]
-    api rootProject.ext.dependencies["cardview-v7"]
-    api rootProject.ext.dependencies["annotations"]
     api rootProject.ext.dependencies["butterknife"]
     api rootProject.ext.dependencies["autosize"]
     api rootProject.ext.dependencies["androideventbus"]
     api rootProject.ext.dependencies["dagger2"]
+    api rootProject.ext.dependencies["gson"]
     api 'me.jessyan:arms:2.5.0'
     api rootProject.ext.dependencies["multidex"]
     //
@@ -105,5 +103,7 @@ dependencies {
     api 'com.wang.avi:library:2.1.3'
     //FlycoTabLayout,tabLayout
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //okgo
+    compile 'com.lzy.net:okgo:3.0.4'
 
 }

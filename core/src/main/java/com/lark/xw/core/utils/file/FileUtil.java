@@ -16,7 +16,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 
 
-import com.lark.xw.core.app.LarkConfig;
+import com.lark.xw.core.app.config.larkConfig.LarkConfig;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

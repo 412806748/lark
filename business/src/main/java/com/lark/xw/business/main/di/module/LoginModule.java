@@ -1,18 +1,15 @@
 package com.lark.xw.business.main.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.di.scope.FragmentScope;
 import com.lark.xw.business.main.mvp.contract.ContactsContract;
-import com.lark.xw.business.main.mvp.contract.ContactsContract;
-import com.lark.xw.business.main.mvp.model.ContactsModel;
-import com.lark.xw.business.main.mvp.model.MainModel;
+import com.lark.xw.business.main.mvp.model.LoginModel;
 
 import dagger.Module;
 import dagger.Provides;
 
 
 @Module
-public class ContactsModule {
+public class LoginModule {
     private ContactsContract.View view;
 
     /**
@@ -20,7 +17,7 @@ public class ContactsModule {
      *
      * @param view
      */
-    public ContactsModule(ContactsContract.View view) {
+    public LoginModule(ContactsContract.View view) {
         this.view = view;
     }
 
@@ -32,7 +29,7 @@ public class ContactsModule {
 
     @FragmentScope
     @Provides
-    ContactsContract.Model provideMainModel(ContactsModel model) {
+    ContactsContract.Model provideMainModel(LoginModel model) {
         return model;
     }
 }

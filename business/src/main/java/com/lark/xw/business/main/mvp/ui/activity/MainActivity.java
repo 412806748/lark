@@ -14,6 +14,7 @@ import com.lark.xw.business.main.di.module.MainModule;
 import com.lark.xw.business.main.mvp.contract.MainContract;
 import com.lark.xw.business.main.mvp.presenter.MainPresenter;
 import com.lark.xw.business.main.mvp.ui.fragment.LarkBottomFragment;
+import com.lark.xw.business.main.mvp.ui.fragment.login.LoginFragment;
 import com.lark.xw.core.activitys.MvpProxyBaseActivity;
 import com.lark.xw.core.fragments.BaseDelegate;
 
@@ -81,6 +82,6 @@ public class MainActivity extends MvpProxyBaseActivity<MainPresenter> implements
 
     @Override
     public BaseDelegate setRootDelegate() {
-        return new LarkBottomFragment();
+        return new LoginFragment();
     }
 }
