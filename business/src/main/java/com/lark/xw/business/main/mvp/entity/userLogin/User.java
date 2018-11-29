@@ -1,4 +1,4 @@
-package com.lark.xw.business.main.mvp.entity;
+package com.lark.xw.business.main.mvp.entity.userLogin;
 
 public class User {
     private String username;
@@ -8,15 +8,17 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public User setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+        return this;
     }
 }

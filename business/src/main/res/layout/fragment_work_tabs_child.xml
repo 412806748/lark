@@ -4,25 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!--<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:id="@+id/refreshLayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="@android:color/white"-->
-    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-    <!--app:srlAccentColor="@android:color/white"-->
-    <!--app:srlEnableLoadMore="false">-->
-
-    <!--<com.scwang.smartrefresh.header.MaterialHeader-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-    <!--android:id="@+id/id_home_rlv"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:overScrollMode="never" />-->
-    <!--</com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/refreshLayout"

@@ -14,11 +14,14 @@ import com.lark.xw.core.app.config.larkConfig.LarkConfig;
 import com.lark.xw.core.app.model.api.Api;
 import com.lark.xw.core.net.interceptors.DebugInterceptor;
 import com.lark.xw.core.ui.icon.FontLarkModule;
+import com.lark.xw.imsdk.tencent.business.InitBusiness;
 import com.lzy.okgo.OkGo;
 import com.squareup.leakcanary.LeakCanary;
 
 import butterknife.ButterKnife;
 import timber.log.Timber;
+
+import static com.lark.xw.core.app.config.larkConfig.LarkConfig.getApplicationContext;
 
 /**
  * 展示 {@link AppLifecycles} 的用法
@@ -83,6 +86,8 @@ public class AppLifecyclesImpl implements AppLifecycles {
         //
         OkGo.getInstance().init(application);
 
+        //初始化腾讯imsdk
+        InitBusiness.start(getApplicationContext());
 
     }
 

@@ -10,18 +10,19 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.lark.xw.business.R;
-import com.lark.xw.business.main.mvp.entity.User;
+import com.lark.xw.business.main.mvp.entity.userLogin.Register;
+import com.lark.xw.business.main.mvp.entity.userLogin.User;
 import com.lark.xw.core.app.model.api.Api;
 import com.lark.xw.core.fragments.LarkFragment;
 import com.lark.xw.core.net.RestClient;
 import com.lark.xw.core.net.callback.IError;
-import com.lark.xw.core.net.callback.IFailure;
 import com.lark.xw.core.net.callback.ISuccess;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 
 import org.json.JSONObject;
+import org.simple.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class RegisterFragment extends LarkFragment {
     public TextInputEditText ed_userName;
     @BindView(R.id.id_login_ed_pwd)
     public TextInputEditText ed_pwd;
-    private final String TAG = "RegisterFragment:  ";
+    private final String TAG = "RegisterFragment ";
 
     public static RegisterFragment create() {
         return new RegisterFragment();
@@ -88,10 +89,7 @@ public class RegisterFragment extends LarkFragment {
     }
 
     private void retrofitPostReg(String userName, String pwd) {
-        User user = new User();
-        user.setPassword(pwd);
-        user.setUsername(userName);
-
+        User user = new User().setUsername(userName).setPassword(pwd);
         String regesterInfo = JSON.toJSON(user).toString();
         Log.d(TAG, "regist: " + regesterInfo);
         RestClient.builder()
@@ -101,35 +99,26 @@ public class RegisterFragment extends LarkFragment {
                     @Override
                     public void onSuccess(String response) {
                         Log.d(TAG, "onSuccess: " + response);
+                        Register register = JSON.parseObject(response, Register.class);
+                        if (register.getSuccess() == 0) {
+                            Toast.makeText(getContext(), register.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else if (register.getSuccess() == 1) {
+                            Toast.makeText(getContext(), register.getMessage(), Toast.LENGTH_SHORT).show();
+                            //post到LoginFragment
+                            EventBus.getDefault().post(user);
+                            getSupportDelegate().pop();
+                        }
                     }
                 })
                 .error(new IError() {
                            @Override
                            public void onError(int code, String msg) {
-                               Log.e(TAG, "onError: code--  " + code + "msg--  " + msg);
+                               Toast.makeText(getContext(), "网络连接异常: ", Toast.LENGTH_SHORT).show();
                            }
                        }
                 ).build()
                 .post();
     }
 
-
-    private void register(String pwd, String usname) {
-        Map<String, String> params = new HashMap<>();
-        params.put("username", usname);
-        params.put("password", pwd);
-        JSONObject jsonObject = new JSONObject(params);
-        OkGo.<String>post(Api.BASE_URL + Api.REGESTER_URL)
-                .tag(this)
-                .upJson(jsonObject)
-                .execute(new StringCallback() {
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        Log.d(TAG, "onSuccess: " + response.body());
-                    }
-                });
-
-
-    }
 
 }

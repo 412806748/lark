@@ -104,6 +104,6 @@ dependencies {
     //FlycoTabLayout,tabLayout
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     //okgo
-    compile 'com.lzy.net:okgo:3.0.4'
+    api 'com.lzy.net:okgo:3.0.4'
 
 }

@@ -42,18 +42,24 @@
             android:name="com.lark.xw.core.app.config.appConfig.GlobalConfiguration"
             android:value="ConfigModule" />
 
-        <!--腾讯IM配置-->
-        <!-- 【必须】消息收发service -->
+
+        <!---腾讯IM配置-->
+        <!-- Android 9.0兼容配置 -->
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <!--  消息收发 service -->
         <service
             android:name="com.tencent.qalsdk.service.QalService"
-            android:exported="true"
-            android:process=":QALSERVICE" />
+            android:exported="false"
+            android:process=":QALSERVICE" >
+        </service>
+        <!--  消息收发辅助 service -->
         <service
             android:name="com.tencent.qalsdk.service.QalAssistService"
             android:exported="false"
-            android:process=":QALSERVICE" />
-
-        <!-- 【必须】 离线消息广播接收器 -->
+            android:process=":QALSERVICE" >
+        </service>
+        <!--  离线消息广播接收器 -->
         <receiver
             android:name="com.tencent.qalsdk.QALBroadcastReceiver"
             android:exported="false">
@@ -61,9 +67,9 @@
                 <action android:name="com.tencent.qalsdk.broadcast.qal" />
             </intent-filter>
         </receiver>
+        <!--  系统消息广播接收器 -->
         <receiver
-            android:name="com.tencent.qalsdk.core.NetConnInfoCenter"
-            android:process=":QALSERVICE">
+            android:name="com.tencent.qalsdk.core.NetConnInfoCenter"  android:process=":QALSERVICE">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -76,13 +82,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
-
-            <!-- ImSDK 3.0.2 后添加 -->
-            <intent-filter>
-                <action android:name="com.tencent.qalsdk.service.TASK_REMOVED" />
-            </intent-filter>
         </receiver>
-
+        <!--腾讯IM配置-->
 
         <activity android:name=".main.mvp.ui.activity.MainActivity">
             <intent-filter>

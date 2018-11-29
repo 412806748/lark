@@ -25,7 +25,7 @@ import io.reactivex.subjects.Subject;
 
 import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
 
-public abstract class MvpProxyBaseActivity<P extends IPresenter> extends ProxyActivity implements IActivity {
+public abstract class MvpProxyBaseActivity<P extends IPresenter> extends ProxyActivity implements IActivity, ActivityLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<ActivityEvent> mLifecycleSubject = BehaviorSubject.create();
     private Cache<String, Object> mCache;
@@ -43,6 +43,11 @@ public abstract class MvpProxyBaseActivity<P extends IPresenter> extends ProxyAc
         return mCache;
     }
 
+    @NonNull
+    @Override
+    public final Subject<ActivityEvent> provideLifecycleSubject() {
+        return mLifecycleSubject;
+    }
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
@@ -101,7 +106,7 @@ public abstract class MvpProxyBaseActivity<P extends IPresenter> extends ProxyAc
      */
     @Override
     public boolean useFragment() {
-        return false;
+        return true;
     }
 
 

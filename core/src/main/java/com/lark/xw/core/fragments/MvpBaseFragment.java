@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.jess.arms.base.delegate.IFragment;
 import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.CacheType;
+import com.jess.arms.integration.lifecycle.FragmentLifecycleable;
 import com.jess.arms.mvp.IPresenter;
 import com.jess.arms.utils.ArmsUtils;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -14,8 +15,9 @@ import com.trello.rxlifecycle2.android.FragmentEvent;
 import javax.inject.Inject;
 
 import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.Subject;
 
-public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment implements IFragment {
+public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment implements IFragment, FragmentLifecycleable {
 
     protected final String TAG = this.getClass().getSimpleName();
     private final BehaviorSubject<FragmentEvent> mLifecycleSubject = BehaviorSubject.create();
@@ -29,9 +31,15 @@ public abstract class MvpBaseFragment<P extends IPresenter> extends LarkFragment
     @Override
     public synchronized Cache<String, Object> provideCache() {
         if (mCache == null) {
-            mCache = ArmsUtils.obtainAppComponentFromContext(getActivity()).cacheFactory().build(CacheType.FRAGMENT_CACHE);
+            mCache = ArmsUtils.obtainAppComponentFromContext(getProxyActivity()).cacheFactory().build(CacheType.FRAGMENT_CACHE);
         }
         return mCache;
+    }
+
+    @NonNull
+    @Override
+    public final Subject<FragmentEvent> provideLifecycleSubject() {
+        return mLifecycleSubject;
     }
 
 
