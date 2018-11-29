@@ -1,20 +1,38 @@
 package com.lark.xw.business.main.mvp.ui.fragment.work.project;
 
-import com.lark.xw.business.main.mvp.ui.fragment.work.WorkChildBaseFragment;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+
+import com.lark.xw.business.R;
 import com.lark.xw.core.fragments.LarkFragment;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ProjectFragment extends LarkFragment {
 
-public class ProjectFragment extends WorkChildBaseFragment {
 
     @Override
-    public List<LarkFragment> setChildFragments() {
-        List<LarkFragment> fragments = new ArrayList<>();
-        fragments.add(new PjChildActionFragment());
-        fragments.add(new PjChildCompleteFragment());
-        return fragments;
+    public Object setLayout() {
+        return R.layout.fragment_work_project;
     }
 
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
+    }
+
+    @Override
+    public int setTitleBar() {
+        return 0;
+    }
+
+    @Override
+    public int setStatusBarView() {
+        return 0;
+    }
+
+    @Override
+    public void post(Runnable runnable) {
+
+    }
 }
