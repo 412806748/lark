@@ -192,6 +192,14 @@ public class WorkFragment extends MvpBaseFragment<MessagePresenter> implements M
                         TextView tv_addFriend = builder.getView(R.id.id_add_friend);
                         TextView tv_scan = builder.getView(R.id.id_add_scan);
 
+                        //好友
+                        tv_addFriend.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        });
+
 
                     }
                 });
